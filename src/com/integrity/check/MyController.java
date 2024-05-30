@@ -43,28 +43,28 @@ public class MyController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// Add event handler to the fileChooserButton
+
 		fileChooserbtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				// Create a FileChooser
+
 				FileChooser fileChooser = new FileChooser();
 				fileChooser.setTitle("Select File");
 
-				// Get the stage from any UI element in the scene
+
 				Stage stage = (Stage) fileChooserbtn.getScene().getWindow();
 
-				// Show the file chooser dialog
+
 				selectedFile = fileChooser.showOpenDialog(stage);
 
-				// If a file was selected, set the path to the pathTextField
+
 				if (selectedFile != null) {
 					pathTextField.setText(selectedFile.getAbsolutePath());
 				}
 			}
 		});
 
-		// Add event handler to the checkHash button
+
 		checkHash.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -94,16 +94,16 @@ public class MyController implements Initializable {
 		byte[] byteArray = new byte[1024];
 		int bytesCount = 0;
 
-		// Read the file data and update in message digest
+
 		while ((bytesCount = fis.read(byteArray)) != -1) {
 			digest.update(byteArray, 0, bytesCount);
 		}
 		fis.close();
 
-		// Get the hash's bytes
+
 		byte[] bytes = digest.digest();
 
-		// Convert bytes to hexadecimal format
+
 		StringBuilder sb = new StringBuilder();
 		for (byte b : bytes) {
 			sb.append(String.format("%02x", b));
