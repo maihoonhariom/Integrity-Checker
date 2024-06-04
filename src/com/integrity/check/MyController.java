@@ -74,9 +74,9 @@ public class MyController implements Initializable {
 						String originalHash = originalSHA.getText().trim();
 
 						if (fileHash.equalsIgnoreCase(originalHash)) {
-							showAlert(Alert.AlertType.INFORMATION, "Hash Match", "The file's SHA-256 hash matches the original hash.");
+							showAlert(Alert.AlertType.INFORMATION, "Hash Match", "The file is Perfect.");
 						} else {
-							showAlert(Alert.AlertType.ERROR, "Hash Mismatch", "The file's SHA-256 hash does not match the original hash.");
+							showAlert(Alert.AlertType.WARNING, "Hash Mismatch", "The file is Not Secure.");
 						}
 					} catch (NoSuchAlgorithmException | IOException e) {
 						showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while computing the hash: " + e.getMessage());
